@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IASE · American Surf Association</title>
+  <meta name="description" content="Surf certification courses at surf spots worldwide, plus a global directory of IASE certified instructors and partner surf shops.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="home">
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <div class="hero">
+      <div class="container">
+        <h1>Surf certification, recognized at surf spots around the world.</h1>
+        <p>For <span data-org="yearsActive"></span> years, <span data-org="orgShortName"></span> has trained and certified surf instructors and schools. Book a course at a surf spot near you, or find a certified instructor or partner shop wherever you travel.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="courses.html">Book a certification course</a>
+          <a class="btn btn-ghost" href="directory.html">Find instructors &amp; shops</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="stats">
+        <div class="stat"><strong data-org="yearsActive"></strong><span>Years of history</span></div>
+        <div class="stat"><strong id="stat-spots"></strong><span>Course locations</span></div>
+        <div class="stat"><strong id="stat-countries"></strong><span>Countries</span></div>
+        <div class="stat"><strong id="stat-instructors"></strong><span>Listed instructors</span></div>
+        <div class="stat"><strong id="stat-shops"></strong><span>Partner shops</span></div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Train at world-class surf spots</h2>
+            <p>The same <span data-org="orgShortName"></span> standard everywhere, taught by certified course directors on six continents.</p>
+          </div>
+          <a class="btn btn-outline" href="courses.html">See all locations</a>
+        </div>
+        <div class="grid" id="featured-spots"></div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="container">
+        <div class="section-head"><div><h2>How certification works</h2></div></div>
+        <div class="steps">
+          <div class="card"><h3>Choose a course</h3><p class="meta">From Learn to Surf to Surf Coach Level 3: pick the level that fits your experience.</p></div>
+          <div class="card"><h3>Pick a spot &amp; date</h3><p class="meta">Train at any IASE location worldwide. Same curriculum, same assessment.</p></div>
+          <div class="card"><h3>Train &amp; get assessed</h3><p class="meta">Practical in-water sessions plus theory, assessed by a certified course director.</p></div>
+          <div class="card"><h3>Get listed</h3><p class="meta">Certified instructors can appear in our global directory so students can find them.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="grid">
+          <div class="card">
+            <h3>🎓 Already an instructor?</h3>
+            <p class="meta">Join the <span data-org="orgShortName"></span> network. Get your existing certification recognized, get listed in our global directory, and teach our courses.</p>
+            <a class="btn btn-primary" href="join.html?as=instructor">Apply as an instructor</a>
+          </div>
+          <div class="card">
+            <h3>🏄 Run a surf shop or school?</h3>
+            <p class="meta">Become an <span data-org="orgShortName"></span> partner shop or exam center and reach students who are looking for certified surf schools.</p>
+            <a class="btn btn-primary" href="join.html?as=shop">Become a partner shop</a>
+          </div>
+          <div class="card">
+            <h3>🤝 Know someone great?</h3>
+            <p class="meta">Help us grow internationally. Recommend an instructor or shop and we'll send them a personal invitation.</p>
+            <a class="btn btn-outline" href="join.html?as=refer">Refer an instructor or shop</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="js/config.js"></script>
+  <script src="data/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

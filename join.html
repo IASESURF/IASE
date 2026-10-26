@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join IASE · Instructors &amp; Surf Shops</title>
+  <meta name="description" content="Surf instructors and surf shops worldwide: join the IASE network.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="join">
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <div class="hero page-hero">
+      <div class="container">
+        <h1>Join the IASE global network</h1>
+        <p>Surf instructors and surf shops in every country are welcome. Get recognized, get listed, and connect with students worldwide.</p>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="grid" style="margin-bottom:36px">
+          <div class="card"><h3>🌍 Global directory listing</h3><p class="meta">Students and travelers find you on our map of certified instructors and shops.</p></div>
+          <div class="card"><h3>📜 Recognized certification</h3><p class="meta">Existing certifications from other bodies can be assessed for recognition of prior learning.</p></div>
+          <div class="card"><h3>📅 Host courses</h3><p class="meta">Partner shops can become exam centers and host IASE courses that are bookable on this site.</p></div>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button type="button" data-tab="instructor">I'm an instructor</button>
+          <button type="button" data-tab="shop">I run a surf shop</button>
+          <button type="button" data-tab="refer">Refer someone</button>
+        </div>
+
+        <div data-panel="instructor" class="form-card">
+          <form id="instructor-form">
+            <h2>Instructor application</h2>
+            <div class="form-grid">
+              <div class="field"><label for="i-name">Full name</label><input id="i-name" name="name" required autocomplete="name"></div>
+              <div class="field"><label for="i-email">Email</label><input id="i-email" name="email" type="email" required autocomplete="email"></div>
+              <div class="field"><label for="i-phone">Phone / WhatsApp</label><input id="i-phone" name="phone" type="tel"></div>
+              <div class="field"><label for="i-country">Country</label><input id="i-country" name="country" list="countries-i" required></div>
+              <div class="field"><label for="i-spot">Home surf spot / town</label><input id="i-spot" name="homeSpot" required></div>
+              <div class="field"><label for="i-years">Years teaching surf</label><input id="i-years" name="yearsTeaching" type="number" min="0" max="70" required></div>
+              <div class="field"><label for="i-langs">Languages you teach in</label><input id="i-langs" name="languages" placeholder="e.g. English, Spanish" required></div>
+              <div class="field"><label for="i-certs">Current certifications</label><input id="i-certs" name="certifications" placeholder="e.g. ISA Level 1, lifeguard, first aid"></div>
+              <div class="field full"><label for="i-msg">Tell us about yourself</label><textarea id="i-msg" name="message"></textarea></div>
+              <label class="check field full"><input type="checkbox" name="listingConsent" value="yes"> Once approved, list my name, location, certifications and languages in the public directory.</label>
+            </div>
+            <datalist id="countries-i" class="countries"></datalist>
+            <div class="btn-row"><button class="btn btn-primary" type="submit">Submit application</button></div>
+            <div class="form-result" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div data-panel="shop" class="form-card" hidden>
+          <form id="shop-form">
+            <h2>Partner shop application</h2>
+            <div class="form-grid">
+              <div class="field"><label for="s-name">Shop / school name</label><input id="s-name" name="shopName" required></div>
+              <div class="field"><label for="s-contact">Contact person</label><input id="s-contact" name="contactName" required></div>
+              <div class="field"><label for="s-email">Email</label><input id="s-email" name="email" type="email" required></div>
+              <div class="field"><label for="s-phone">Phone / WhatsApp</label><input id="s-phone" name="phone" type="tel"></div>
+              <div class="field"><label for="s-country">Country</label><input id="s-country" name="country" list="countries-s" required></div>
+              <div class="field"><label for="s-city">City / surf spot</label><input id="s-city" name="city" required></div>
+              <div class="field"><label for="s-web">Website or social media</label><input id="s-web" name="website" type="url" placeholder="https://"></div>
+              <div class="field"><label for="s-staff">Number of instructors</label><input id="s-staff" name="instructorCount" type="number" min="0"></div>
+              <div class="field full">
+                <label>Services</label>
+                <div class="tags">
+                  <label class="check"><input type="checkbox" name="svcLessons" value="yes"> Lessons</label>
+                  <label class="check"><input type="checkbox" name="svcRentals" value="yes"> Rentals</label>
+                  <label class="check"><input type="checkbox" name="svcRetail" value="yes"> Retail</label>
+                  <label class="check"><input type="checkbox" name="svcCamp" value="yes"> Surf camp</label>
+                  <label class="check"><input type="checkbox" name="svcExam" value="yes"> Interested in hosting IASE courses</label>
+                </div>
+              </div>
+              <div class="field full"><label for="s-msg">Anything else?</label><textarea id="s-msg" name="message"></textarea></div>
+            </div>
+            <datalist id="countries-s" class="countries"></datalist>
+            <div class="btn-row"><button class="btn btn-primary" type="submit">Submit application</button></div>
+            <div class="form-result" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div data-panel="refer" class="form-card" hidden>
+          <form id="refer-form">
+            <h2>Refer an instructor or shop</h2>
+            <p class="meta">Know a great instructor or surf shop abroad? Tell us and we'll send them a personal invitation that mentions your recommendation.</p>
+            <div class="form-grid">
+              <div class="field"><label for="r-your">Your name</label><input id="r-your" name="referrerName" required></div>
+              <div class="field"><label for="r-your-email">Your email</label><input id="r-your-email" name="referrerEmail" type="email" required></div>
+              <div class="field"><label for="r-name">Their name or shop name</label><input id="r-name" name="inviteeName" required></div>
+              <div class="field"><label for="r-email">Their email</label><input id="r-email" name="inviteeEmail" type="email" required></div>
+              <div class="field"><label for="r-type">They are a…</label><select id="r-type" name="inviteeType"><option>Instructor</option><option>Surf shop / school</option></select></div>
+              <div class="field"><label for="r-country">Their country</label><input id="r-country" name="inviteeCountry" list="countries-r"></div>
+              <label class="check field full"><input type="checkbox" name="inviteeConsent" value="yes" required> They're happy for me to share their contact details with IASE.</label>
+            </div>
+            <datalist id="countries-r" class="countries"></datalist>
+            <div class="btn-row"><button class="btn btn-primary" type="submit">Send referral</button></div>
+            <div class="form-result" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="js/config.js"></script>
+  <script src="data/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
