@@ -1,4 +1,4 @@
-# IASE · International Association of Surfing Educators: new site pages
+# IASE · International Association of Surfing Education: new site pages
 
 A static website (plain HTML/CSS/JavaScript, with no build step and no server) with:
 

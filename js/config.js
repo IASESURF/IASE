@@ -1,7 +1,7 @@
 // Site-wide settings. Edit these values; no other code changes are needed.
 window.IASE_CONFIG = {
   orgShortName: "IASE",
-  orgFullName: "International Association of Surfing Educators",
+  orgFullName: "International Association of Surfing Education",
   yearsActive: "20+",
   contactEmail: "office@iase-surf.com",
   mainSiteUrl: "https://www.iase-surf.com",
