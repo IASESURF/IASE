@@ -5,7 +5,7 @@
   // ---------- helpers ----------
   const $ = (sel, root = document) => root.querySelector(sel);
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const money = (n) => new Intl.NumberFormat("en-US", { style: "currency", currency: cfg.currency, maximumFractionDigits: 0 }).format(n);
+  const money = (n) => n == null ? "Price on request" : new Intl.NumberFormat("en-US", { style: "currency", currency: cfg.currency, maximumFractionDigits: 0 }).format(n);
   const fmtDate = (iso) => new Date(iso + "T00:00:00").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" });
   const sampleBadge = (item) => (item.sample ? '<span class="badge-sample" title="Placeholder listing">Sample</span>' : "");
   const countries = () => [...new Set([...data.spots, ...data.instructors, ...data.shops].map((x) => x.country))].sort();
@@ -57,6 +57,7 @@
       ["index.html", "Home", "home"],
       ["courses.html", "Book a Course", "courses"],
       ["directory.html", "Instructors & Shops", "directory"],
+      [cfg.mainSiteUrl + "/iase/certificate/index", "Find My Certification", "cert"],
       ["join.html", "Join IASE", "join", "cta"],
     ];
     $("#site-header").innerHTML = `
@@ -68,8 +69,8 @@
       </div>`;
     $("#site-footer").innerHTML = `
       <div class="container">
-        <div><strong style="color:#fff">${esc(cfg.orgShortName)} · ${esc(cfg.orgFullName)}</strong><br>Certifying surf instructors and schools for ${esc(cfg.yearsActive)} years.</div>
-        <div><a href="mailto:${esc(cfg.contactEmail)}">${esc(cfg.contactEmail)}</a><br>© ${new Date().getFullYear()} ${esc(cfg.orgShortName)}</div>
+        <div><strong style="color:#fff">${esc(cfg.orgShortName)} · ${esc(cfg.orgFullName)}</strong><br>Surf education and certification for ${esc(cfg.yearsActive)} years.</div>
+        <div><a href="mailto:${esc(cfg.contactEmail)}">${esc(cfg.contactEmail)}</a> · <a href="${esc(cfg.mainSiteUrl)}">${esc(cfg.mainSiteUrl.replace(/^https?:\/\//, ""))}</a><br>© ${new Date().getFullYear()} ${esc(cfg.orgShortName)}</div>
       </div>`;
     document.querySelectorAll("[data-org]").forEach((el) => (el.textContent = cfg[el.dataset.org]));
   }
@@ -105,7 +106,7 @@
       $("#course-list").innerHTML = data.courses.map((c) => `
         <div class="card selectable ${state.course === c.id ? "selected" : ""}" data-course="${c.id}" tabindex="0" role="button" aria-pressed="${state.course === c.id}">
           <h3>${esc(c.name)}</h3>
-          <div class="meta">${esc(c.audience)} · ${c.days} days</div>
+          <div class="meta">${esc(c.audience)} · ${esc(c.duration)}</div>
           <p>${esc(c.summary)}</p>
           <p class="hint">Prerequisites: ${esc(c.prerequisites)}</p>
           <div class="price">${money(c.price)}</div>
@@ -137,7 +138,7 @@
       const c = state.course && courseById(state.course);
       const n = Math.max(1, parseInt($("#participants").value, 10) || 1);
       $("#summary-text").innerHTML = c ? `<strong>${esc(c.name)}</strong> × ${n}` : "Select a course to see the total";
-      $("#summary-total").textContent = c ? money(c.price * n) : "";
+      $("#summary-total").textContent = !c ? "" : c.price == null ? "Price confirmed by IASE" : money(c.price * n);
     }
 
     $("#course-list").addEventListener("click", (e) => {
@@ -162,8 +163,8 @@
       }
       const c = courseById(state.course), s = spotById(f.spot);
       const n = Math.max(1, parseInt(f.participants, 10) || 1);
-      return { ...f, participants: n, course: c.name, courseId: c.id, spot: `${s.name}, ${s.country}`, spotId: s.id, estimatedTotal: c.price * n, currency: cfg.currency };
-    }, (p) => `<strong>Booking request received!</strong> ${esc(p.course)} at ${esc(p.spot)}, starting ${fmtDate(p.session)}, for ${p.participants} participant(s). Estimated total ${money(p.estimatedTotal)}. Our team will email <strong>${esc(p.email)}</strong> within 48 hours to confirm your place and arrange payment.`);
+      return { ...f, participants: n, course: c.name, courseId: c.id, spot: `${s.name}, ${s.country}`, spotId: s.id, estimatedTotal: c.price == null ? null : c.price * n, currency: cfg.currency };
+    }, (p) => `<strong>Booking request received!</strong> ${esc(p.course)} at ${esc(p.spot)}, starting ${fmtDate(p.session)}, for ${p.participants} participant(s). ${p.estimatedTotal == null ? "We'll confirm the price." : "Estimated total " + money(p.estimatedTotal) + "."} Our team will email <strong>${esc(p.email)}</strong> within 48 hours to confirm your place and arrange payment.`);
 
     renderCourses();
     renderSpots();

@@ -90,6 +90,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--o
 textarea { min-height: 100px; resize: vertical; }
 .check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; }
 .check input { width: auto; margin-top: 4px; }
+.field.check { flex-direction: row; }
 .hint { color: var(--muted); font-size: .85rem; }
 .step-title { display: flex; align-items: center; gap: 10px; margin: 32px 0 16px; }
 .step-title span { background: var(--ink); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: .9rem; }

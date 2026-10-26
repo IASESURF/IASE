@@ -1,4 +1,4 @@
-# IASE · American Surf Association website
+# IASE · International Association of Surfing Educators: new site pages
 
 A static website (plain HTML/CSS/JavaScript, with no build step and no server) with:
 
@@ -12,7 +12,7 @@ A static website (plain HTML/CSS/JavaScript, with no build step and no server) w
 
 ## Before launch: three things to change
 
-1. **Replace the sample data.** Every course location, instructor and shop in `data/data.js` is a placeholder marked `sample: true`, and each one shows a yellow "Sample" badge on the site. Replace them with real IASE records, and remove `sample: true` from each real entry. Prices and course levels in that file are placeholders too.
+1. **Replace the sample data.** Every course location, instructor and shop in `data/data.js` is a placeholder marked `sample: true`, and each one shows a yellow "Sample" badge on the site. Replace them with real IASE records, and remove `sample: true` from each real entry. Course levels and the Level 1, 2 and 4 prices (GBP) come from the current iase-surf.com course page; other prices show "Price on request" until you add them.
 2. **Connect the forms.** In `js/config.js`, set `formEndpoint` to a form-handling service URL (for example a free [Formspree](https://formspree.io) form). Until you do, the forms run in *demo mode*: they confirm on screen but **nothing is sent**, and they show a warning saying so.
 3. **Set the contact email** in `js/config.js`.
 
@@ -31,9 +31,15 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-## Publish free with GitHub Pages
+## Putting these pages on iase-surf.com
 
-Push this repository to GitHub, then go to **Settings → Pages → Deploy from branch** and select the main branch and the `/ (root)` folder.
+The existing site at https://www.iase-surf.com is a PHP application (login, "Find my certification", school applications, surf-spot contributions). Its source code is **not** in this repository. These new pages are designed to sit **alongside** it, not replace it; they link back to its certification lookup, school application and spot-contribution pages.
+
+Options, simplest first:
+
+1. **Upload as a folder on the existing server.** Copy every file in this repository into a folder such as `/surf/` on the iase-surf.com web server, and the pages are live at `https://www.iase-surf.com/surf/`. Then add "Book a Course" and "Instructors & Shops" links to the existing site's menu. Whoever manages the hosting can do this in a few minutes by FTP or the hosting control panel.
+2. **Subdomain.** Publish this repository with GitHub Pages (**Settings → Pages → Deploy from branch**), then point a DNS record such as `book.iase-surf.com` (CNAME to `iasesurf.github.io`) at it.
+3. **Integrate into the PHP application.** Rebuild these pages as part of the existing app, so bookings and applications land in its database and admin area. This needs the existing source code.
 
 ## How bookings work, and what to add later
 
